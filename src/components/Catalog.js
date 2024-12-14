@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../components/style/style.css'
+
 
 const mockProducts = [
   { id: 1, name: 'Floor Tile A', price: 20, category: 'Floor Tiles', image: 'https://images.pexels.com/photos/220177/pexels-photo-220177.jpeg?auto=compress&cs=tinysrgb&w=600' },

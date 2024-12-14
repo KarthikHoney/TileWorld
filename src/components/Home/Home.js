@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../Footer';
 import './Home.css';
 import pic1 from '../../assets/pexels-christa-grover-977018-1909656.jpg'
 import pic2 from '../../assets/pexels-kelly-1179532-2869215.jpg'
@@ -26,7 +25,7 @@ function Home() {
       <section className="hero-section text-center d-flex flex-column justify-content-center align-items-center">
         <h1 className="mb-4">Welcome to <span style={{color:'red'}}>Tiles</span> Showroom</h1>
         <p className="mb-4">Discover the finest <span style={{color:'red',fontWeight:'700'}}>Tiles</span> for every space in your home or office.</p>
-        <Link to="/catalog" className="btn btn-dark">Explore Our Tiles</Link>
+        <Link to="/catalog" className="btn btn-dark buttonExplore">Explore Our Tiles</Link>
       </section>
 
       {/* Slider Section */}
@@ -136,28 +135,37 @@ function Home() {
       </section>
 
       {/* About Section */}
-      <section id='About' className="about-section d-flex flex-column justify-content-center align-items-center">
-        <div className="container position-relative">
-          <video className="background-video" autoPlay loop muted>
-            <source src={video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="overlay-content">
-            <h2 className="text-center mb-4">About Us</h2>
-            <p className="text-center mb-4">
-              We are a leading tile showroom offering a wide variety of tiles for all your needs. With years of experience in the industry, we are committed to providing the best quality and service.
-            </p>
-            <div className="row">
-              <div className="col-md-6 mb-3">
-                <img src="https://images.pexels.com/photos/8134845/pexels-photo-8134845.jpeg?auto=compress&cs=tinysrgb&w=600" className="img-fluid rounded shadow aboutPic" alt="Showroom" />
-              </div>
-              <div className="col-md-6 mb-3">
-                <img src="https://images.pexels.com/photos/3315291/pexels-photo-3315291.jpeg?auto=compress&cs=tinysrgb&w=600" className="img-fluid rounded shadow aboutPic" alt="Tiles" />
-              </div>
-            </div>
-          </div>
+      <section id="About" className="about-section d-flex flex-column justify-content-center align-items-center">
+  <div className="container position-relative">
+    <video className="background-video" autoPlay loop muted>
+      <source src={video} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div className="overlay-content">
+      <h2 className="text-center mb-4">About Us</h2>
+      <p className="text-center mb-4">
+        We are a leading tile showroom offering a wide variety of tiles for all your needs. With years of experience in the industry, we are committed to providing the best quality and service.
+      </p>
+      <div className="row">
+        <div className="col-md-6 col-12 mb-3">
+          <img
+            src="https://images.pexels.com/photos/8134845/pexels-photo-8134845.jpeg?auto=compress&cs=tinysrgb&w=600"
+            className="img-fluid rounded shadow aboutPic"
+            alt="Showroom"
+          />
         </div>
-      </section>
+        <div className="col-md-6 col-12 mb-3">
+          <img
+            src="https://images.pexels.com/photos/3315291/pexels-photo-3315291.jpeg?auto=compress&cs=tinysrgb&w=600"
+            className="img-fluid rounded shadow aboutPic"
+            alt="Tiles"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Contact Section */}
           <section id='Contact' className="contact-section d-flex align-items-center">
@@ -216,7 +224,6 @@ function Home() {
           </section>
 
 
-      <Footer />
     </div>
   );
 }

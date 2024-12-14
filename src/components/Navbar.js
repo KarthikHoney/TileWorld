@@ -11,10 +11,6 @@ const logoPic = {
   borderRadius: "10px",
 };
 
-const Carticon = {
-  marginRight: "5px",
-};
-
 const Navbar = () => {
   const { cartCount } = useContext(CartContext);
   return (

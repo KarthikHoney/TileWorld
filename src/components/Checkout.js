@@ -1,13 +1,21 @@
 import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
-import { Link, useNavigate } from "react-router-dom"; 
+import confetti from "canvas-confetti";
+import "../components/style/style.css";
+
+import { Link, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const { cart, totalAmount } = useContext(CartContext); 
-  const navigate = useNavigate(); 
+  const { cart, totalAmount } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const handleCheckout = (event) => {
     event.preventDefault();
+    confetti({
+      particleCount: 500,
+      spread: 360,
+      origin: { y: 0.5 },
+    });
     navigate("/order-confirmation");
   };
 
@@ -15,10 +23,12 @@ const Checkout = () => {
     <div className="container mt-5">
       <h2>Checkout</h2>
       {cart.length === 0 ? (
-       <div>
-         <p>Your cart is empty. Please add items to your cart first.</p>
-         <Link to='/cart'><button className="btn btn-primary">Back To Cart</button></Link>
-       </div>
+        <div>
+          <p>Your cart is empty. Please add items to your cart first.</p>
+          <Link to="/cart">
+            <button className="btn btn-primary">Back To Cart</button>
+          </Link>
+        </div>
       ) : (
         <div>
           <h3>Your Products:</h3>
@@ -53,7 +63,12 @@ const Checkout = () => {
               <label htmlFor="address" className="form-label">
                 Shipping Address
               </label>
-              <input type="text" id="address" className="form-control" required />
+              <input
+                type="text"
+                id="address"
+                className="form-control"
+                required
+              />
             </div>
             <div className="mb-3">
               <label htmlFor="payment" className="form-label">
