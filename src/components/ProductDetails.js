@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
-import '../components/style/style.css'
+import "../components/style/style.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const mockProducts = [
   {
@@ -263,53 +265,52 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     addToCart(product);
+    toast.success(`${product.name} has been added to the cart!`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
-
-
-
   return (
-      <div className="product-details">
-        <div className="product-info">
-          <img src={product.image} alt={product.name} />
-          <div>
-            <h2>{product.name}</h2>
-            <p>
-              <strong>Price:</strong> ${product.price}
-            </p>
-            <p>
-              <strong>Category:</strong> {product.category}
-            </p>
-            <p>
-              <strong>Description:</strong> {product.description}
-            </p>
-            <p>
-              <strong>Rating:</strong> {product.rating} ⭐
-            </p>
-            <button onClick={handleAddToCart} className="btn btn-primary">
-              Add To Cart
-            </button>
-          </div>
-        </div>
-        <div className="similar-products">
-          <h3>Similar Products</h3>
-          <div className="similar-product-list">
-            {similarProducts.map((similar) => (
-              <div key={similar.id} className="similar-product-card">
-                <img src={similar.image} alt={similar.name} />
-                <h4>{similar.name}</h4>
-                <p>${similar.price}</p>
-                <Link
-                  to={`/product/${similar.id}`}
-                  className="btn btn-secondary"
-                >
-                  View Details
-                </Link>
-              </div>
-            ))}
-          </div>
+    <div className="product-details">
+      <ToastContainer />
+      <div className="product-info">
+        <img src={product.image} alt={product.name} />
+        <div>
+          <h2>{product.name}</h2>
+          <p>
+            <strong>Price:</strong> ₹{product.price}
+          </p>
+          <p>
+            <strong>Category:</strong> {product.category}
+          </p>
+          <p>
+            <strong>Description:</strong> {product.description}
+          </p>
+          <p>
+            <strong>Rating:</strong> {product.rating} ⭐
+          </p>
+          <button onClick={handleAddToCart} className="btn btn-primary">
+            Add To Cart
+          </button>
         </div>
       </div>
+      <div className="similar-products">
+        <h3>Similar Products</h3>
+        <div className="similar-product-list">
+          {similarProducts.map((similar) => (
+            <div key={similar.id} className="similar-product-card">
+              <img src={similar.image} alt={similar.name} />
+              <h4>{similar.name}</h4>
+              <p>₹{similar.price}</p>
+              <Link to={`/product/${similar.id}`} className="btn btn-secondary">
+                View Details
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
